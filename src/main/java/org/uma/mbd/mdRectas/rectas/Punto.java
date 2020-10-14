@@ -37,7 +37,7 @@ public class Punto {
 
         return Math.sqrt(Math.pow(x - pto.x, 2) + Math.pow(y - pto.y, 2));
     }
-
+    @Override
     public String toString() { // visualización
 
         return "P(" + x + "," + y + ")";
