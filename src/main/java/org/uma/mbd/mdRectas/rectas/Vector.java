@@ -14,9 +14,11 @@ public class Vector {
         this.extremo = extremo;
     }//contructor dado un punto extremo
 
-    public Vector(Punto interior, Punto exterior) { // constructor de un vector dados dos puntos
-        this.origen = interior;
-        this.extremo = exterior;
+    public Vector(Punto origen, Punto exterior) { // constructor de un vector dados dos puntos
+        origen = new Punto(origen.getX(), origen.getY());
+        exterior = new Punto(exterior.getX(), exterior.getY());
+        extremo = new Punto(exterior.getX() - origen.getX(), exterior.getY() - origen.getY());
+
     }
 
     public double getComponenteX() {
@@ -28,11 +30,12 @@ public class Vector {
     }
 
     public Vector Ortogonal() {
-        return new Vector(-1 * extremo.getY(), extremo.getX());
+        Punto punto_O = new Punto(-1 * getComponenteY(),getComponenteX());
+        return new Vector(punto_O);
     }
 
     public boolean paraleloA(Vector vec) {
-        if (extremo.getX() * vec.getComponenteY() == extremo.getY() * vec.getComponenteX()) {
+        if (getComponenteX() * vec.getComponenteY() == getComponenteY() * vec.getComponenteX()) {
             return true;
         } else {
             return false;
@@ -40,12 +43,12 @@ public class Vector {
     }
 
     public Punto extremoDesde(Punto org) {
-        return new Punto(org.getX() + extremo.getX(), org.getY() + extremo.getY());
+        return new Punto(org.getX() + getComponenteX(), org.getY() + getComponenteY());
     }
 
     @Override
     public String toString() { // visualización
-        return "V(" + extremo.getX() + "," + extremo.getY() + ")";
+        return "V(" + getComponenteX() + "," + getComponenteY() + ")";
     }
 
 

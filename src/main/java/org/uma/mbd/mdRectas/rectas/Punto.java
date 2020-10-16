@@ -4,7 +4,7 @@ public class Punto {
     private double x, y; // declaro una variable local provada x e y
 
     public Punto() {
-        x = y = 0;
+        this(0,0);
     } // declaro una construccion de un objeto Punto con x e y = 0
 
     public Punto(double a, double b) {
